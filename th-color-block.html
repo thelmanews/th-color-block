@@ -8,7 +8,7 @@ A Thelma component providing solution to no problem in particular.
 
 ##### Example
 
-    <th-color-block shape="circle" textColor="black" color="white" percentWidth="0.5" percentHeight="0.5" positionX="0.25" positionY="0.25"> ## This is a heading </th-color-block>
+    <th-color-block shape="circle" textColor="black" color="white" horizontalScale="0.5" verticalScale="0.5" positionX="0.25" positionY="0.25"> ## This is a heading </th-color-block>
 
 @element th-color-block
 @blurb Element providing solution to no problem in particular.
@@ -16,11 +16,11 @@ A Thelma component providing solution to no problem in particular.
 @homepage http://nishacodes.github.io/th-color-block
 -->
 
-<polymer-element extends="th-animated" name="th-color-block" attributes="shape color textColor opacity positionY positionX percentHeight percentWidth">
+<polymer-element extends="th-animated" name="th-color-block" attributes="shape color textColor opacity positionY positionX verticalScale horizontalScale">
   <template>
     <core-style ref="theme"></core-style>
     <link rel="stylesheet" href="th-color-block.css">
-    <div id="shape" class="shape {{shape}}" style="background-color: {{color}}; width: {{percentWidth | toPercent}}; height: {{percentHeight | toPercent}}; opacity: {{opacity}};  -khtml-opacity: {{opacity}}; -webkit-opacity: {{opacity}}; -moz-opacity: {{opacity}}; position: absolute; left: {{positionX | toPercent}}; top: {{positionY | toPercent}}; margin-left: {{leftAdj}}px; margin-top: {{topAdj}}px; width: {{size}}px; height: {{size}}px;">
+    <div id="shape" class="shape {{shape}}" style="background-color: {{color}}; width: {{horizontalScale | toPercent}}; height: {{verticalScale | toPercent}}; opacity: {{opacity}};  -khtml-opacity: {{opacity}}; -webkit-opacity: {{opacity}}; -moz-opacity: {{opacity}}; position: absolute; left: {{positionX | toPercent}}; top: {{positionY | toPercent}}; margin-left: {{leftAdj}}px; margin-top: {{topAdj}}px; width: {{size}}px; height: {{size}}px;">
     <th-text class="text" markdown="true" color="{{textColor}}" align="center">{{textContent}} </th-text>
 
     </div>
@@ -30,8 +30,8 @@ A Thelma component providing solution to no problem in particular.
       shape: 'circle',
       opacity: 1,
       color: 'black',
-      percentWidth: 1,
-      percentHeight: 1,
+      horizontalScale: 1,
+      verticalScale: 1,
       positionX: 0.5,
       positionY: 0.5,
       ready: function (){
@@ -42,7 +42,7 @@ A Thelma component providing solution to no problem in particular.
         this.topAdj = -parseInt(shapeHeight) / 2;
 
         if (this.shape === "circle" || this.shape === "square" ){
-          this.size = Math.min(this.computeWidth(), this.computeHeight()) * Math.max(this.percentWidth, this.percentHeight);
+          this.size = Math.min(this.computeWidth(), this.computeHeight()) * Math.max(this.horizontalScale, this.verticalScale);
           this.$.shape.style.width = this.size + "px";
           this.$.shape.style.height = this.size + "px";
           this.leftAdj = - this.size / 2;
