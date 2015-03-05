@@ -1,0 +1,13 @@
+{
+  "name": "th-color-block",
+  "version": "0.0.0",
+  "keywords": "thelma, polymer, web-components",
+  "main": "th-color-block.html",
+  "dependencies": {  
+    "th-theme": "thelmanews/th-theme",
+    "polymer": "Polymer/polymer#~0.5.1",
+    "th-animated": "thelmanews/th-animated",
+    "th-text": "thelmanews/th-text"
+  }
+}
+
