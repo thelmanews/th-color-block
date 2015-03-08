@@ -37,18 +37,18 @@ A Thelma component providing solution to no problem in particular.
       ready: function (){
         var width = this.computeWidth(),
             height = this.computeHeight(),
-            shapeWidth = width * this.horizontalScale, 
-            shapeHeight = height * this.verticalScale; 
+            shapeWidth = parseInt(width) * this.horizontalScale, 
+            shapeHeight = parseInt(height) * this.verticalScale; 
 
-        this.leftAdj = -shapeWidth / 2;
-        this.topAdj = -shapeHeight / 2;
+        this.leftAdj = -parseInt(shapeWidth) / 2;
+        this.topAdj = -parseInt(shapeHeight) / 2;
 
         if (this.shape === "circle" || this.shape === "square" ){
           this.size = Math.min(width, height) * Math.max(this.horizontalScale, this.verticalScale);
           this.$.shape.style.width = this.size + "px";
           this.$.shape.style.height = this.size + "px";
-          this.leftAdj = - this.size / 2;
-          this.topAdj = - this.size / 2;
+          this.leftAdj = - parseInt(this.size) / 2;
+          this.topAdj = - parseInt(this.size) / 2;
         }
       },
       toPercent: function(value){
