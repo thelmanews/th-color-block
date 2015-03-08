@@ -35,14 +35,16 @@ A Thelma component providing solution to no problem in particular.
       positionX: 0.5,
       positionY: 0.5,
       ready: function (){
-        var shapeWidth = window.getComputedStyle(this.$.shape).width, // use getComputedStyle for Thelma composer
-            shapeHeight = window.getComputedStyle(this.$.shape).height; // use getComputedStyle for Thelma composer
-        
-        this.leftAdj = -parseInt(shapeWidth) / 2;
-        this.topAdj = -parseInt(shapeHeight) / 2;
+        var width = this.computeWidth(),
+            height = this.computeHeight(),
+            shapeWidth = width * this.horizontalScale, 
+            shapeHeight = height * this.verticalScale; 
+
+        this.leftAdj = -shapeWidth / 2;
+        this.topAdj = -shapeHeight / 2;
 
         if (this.shape === "circle" || this.shape === "square" ){
-          this.size = Math.min(this.computeWidth(), this.computeHeight()) * Math.max(this.horizontalScale, this.verticalScale);
+          this.size = Math.min(width, height) * Math.max(this.horizontalScale, this.verticalScale);
           this.$.shape.style.width = this.size + "px";
           this.$.shape.style.height = this.size + "px";
           this.leftAdj = - this.size / 2;
